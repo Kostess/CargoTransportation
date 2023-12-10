@@ -17,7 +17,7 @@
 
 {% endblock %}
 
-{% block index-parth %}
+{% block index-path %}
 
     <div class="centring">
         <section class="services">
@@ -54,8 +54,8 @@
                     </a>
                 </div>
 
-                <div class="card">
-                    <a href="" class="link-card">
+                <div class="card more-card">
+                    <a href="{% url 'services' %}" class="link-card more">
                         <p>Узнать больше→</p>
                     </a>
                 </div>
@@ -109,5 +109,6 @@
 
             </div>
         </section>
+
     </div>
 {% endblock %}

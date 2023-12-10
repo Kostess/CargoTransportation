@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block company-path %}
+    <div class="main-page-wrapper">
+        <div class="centring">
+            {% include 'include/description-page.html' %}
+            <div class="workers">
+                <h2 class="title-block">Сотрудники</h2>
+                <div class="group-images">
+                    <div class="image-wrapper">
+                        <img src="{% static 'transporations/images/tmp_foto.jpg' %}" alt="">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'transporations/images/tmp_foto.jpg' %}" alt="">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'transporations/images/tmp_foto.jpg' %}" alt="">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'transporations/images/tmp_foto.jpg' %}" alt="">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'transporations/images/tmp_foto.jpg' %}" alt="">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'transporations/images/tmp_foto.jpg' %}" alt="">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="{% static 'transporations/images/tmp_foto.jpg' %}" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contacts-wrapper">
+                <h2 class="title-block">Контакты</h2>
+                <div class="contacts-block adress-block">
+                    <h3 class="title-contact">Адрес</h3>
+                    <ul class="list">
+                        <li class="list-item">gawgfa</li>
+                        <li class="list-item">gawgaw</li>
+                        <li class="list-item">gawfg</li>
+                        <li class="list-item">gawgf</li>
+                        <li class="list-item">fgwawf</li>
+                    </ul>
+                </div>
+                <div class="contacts-block tel-block">
+                    <h3 class="title-contact">Телефонные номера</h3>
+                    <ul class="list">
+                        <li class="list-item">gawgfa</li>
+                        <li class="list-item">gawgaw</li>
+                        <li class="list-item">gawfg</li>
+                        <li class="list-item">gawgf</li>
+                        <li class="list-item">fgwawf</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
