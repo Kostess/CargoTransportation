@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'transporations/style/index.css' %}">
     <link rel="stylesheet" href="{% static 'transporations/style/service.css' %}">
     <link rel="stylesheet" href="{% static 'transporations/style/company.css' %}">
+    <link rel="stylesheet" href="{% static 'transporations/style/services.css' %}">
 </head>
 <body>
     <header class="header">
@@ -52,7 +53,7 @@
 
     </header>
 
-    {% block service-path %}
+    {% block services-path %}
 
     {% endblock %}
 
@@ -61,6 +62,10 @@
     {% endblock %}
 
     {% block company-path %}
+
+    {% endblock %}
+
+    {% block service-path %}
 
     {% endblock %}
 

@@ -1,0 +1,14 @@
+{% extends 'handlerBase.html' %}
+
+{% load static %}
+
+{% block 404 %}
+    <div class="wrapper">
+        <div class="media-404">
+            <img src="{% static 'transporations/images/404.jpg' %}" alt="">
+        </div>
+        <h1>Страница не найдена</h1>
+        <a href="{% url 'home' %}">Вернуться на главную</a>
+    </div>
+{% endblock %}
+

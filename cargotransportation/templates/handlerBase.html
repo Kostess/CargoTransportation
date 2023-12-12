@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'transporations/style/404.css' %}">
+    <link rel="stylesheet" href="{% static 'transporations/style/500.css' %}">
+</head>
+<body>
+    {% block 404 %}
+
+    {% endblock %}
+
+    {% block 500 %}
+
+    {% endblock %}
+</body>
+</html>
