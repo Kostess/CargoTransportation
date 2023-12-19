@@ -11,3 +11,12 @@
     align-items: center;
     flex-direction: column;
 }
+
+.media-404 {
+    max-width: 750px;
+    width: 100%;
+}
+
+.media-404 img {
+    width: 100%;
+}

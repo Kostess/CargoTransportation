@@ -5,7 +5,7 @@ def index(request):
     return render(request, "transportations/index.html")
 
 def services(request):
-    return renders(request, "transportations/services.html")
+    return render(request, "transportations/services.html")
 
 def company(request):
     return render(request, "transportations/company.html")
