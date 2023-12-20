@@ -23,36 +23,37 @@
         <section class="services">
             <h2 class="title-section">Наши услуги</h2>
             <div class="group-cars">
+                {% for i in card_three %}
+                    <div class="card">
+                        <a href="{{ i.get_absolute_url }}" class="link-card">
+                            <h3 class="title-card">{{ i.title }}</h3>
+                            <img src="{{ i.image_card.url }}" alt="" class="image-card">
+                            <div class="text-block-card">
+                                <p class="text-card">{{ i.short_description }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
 
-                <div class="card">
-                    <a href="{% url 'service' %}" class="link-card">
-                        <h3 class="title-card">Перевозки грузов по городу и области</h3>
-                        <img src="{% static 'transporations/images/card.jpg' %}" alt="" class="image-card">
-                        <div class="text-block-card">
-                            <p class="text-card">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                        </div>
-                    </a>
-                </div>
+<!--                <div class="card">-->
+<!--                    <a href="" class="link-card">-->
+<!--                        <h3 class="title-card">Междугородние перевозки</h3>-->
+<!--                        <img src="{% static 'transporations/images/card.jpg' %}" alt="" class="image-card">-->
+<!--                        <div class="text-block-card">-->
+<!--                            <p class="text-card">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
 
-                <div class="card">
-                    <a href="{% url 'service' %}" class="link-card">
-                        <h3 class="title-card">Междугородние перевозки</h3>
-                        <img src="{% static 'transporations/images/card.jpg' %}" alt="" class="image-card">
-                        <div class="text-block-card">
-                            <p class="text-card">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card">
-                    <a href="{% url 'service' %}" class="link-card">
-                        <h3 class="title-card">Перевозка опасных грузов</h3>
-                        <img src="{% static 'transporations/images/card.jpg' %}" alt="" class="image-card">
-                        <div class="text-block-card">
-                            <p class="text-card">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
-                    </a>
-                </div>
+<!--                <div class="card">-->
+<!--                    <a href="" class="link-card">-->
+<!--                        <h3 class="title-card">Перевозка опасных грузов</h3>-->
+<!--                        <img src="{% static 'transporations/images/card.jpg' %}" alt="" class="image-card">-->
+<!--                        <div class="text-block-card">-->
+<!--                            <p class="text-card">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
 
                 <div class="card more-card">
                     <a href="{% url 'services' %}" class="link-card more">

@@ -22,5 +22,5 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('services/', views.services, name='services'),
     path('company/', views.company, name='company'),
-    path('service/', views.service, name='service'),
+    path('services/<slug:name>', views.service, name='service'),
 ]
