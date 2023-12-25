@@ -12,6 +12,11 @@ class Cards_ordersAdmn(admin.ModelAdmin):
     list_display = ('id', 'title', 'short_description', 'full_description', 'slug', 'image_card')
     list_display_links = ('id', 'title')
 
+@admin.register(Type_transporation)
+class Type_transporationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title_type', 'description', 'image_type')
+    list_display_links = ('id', 'title_type')
+
 @admin.register(Clients)
 class ClientsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name_client', 'number_telephone', 'adress', 'inn', 'email')

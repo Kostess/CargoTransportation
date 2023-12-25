@@ -26,6 +26,18 @@ class Cards_orders(models.Model):
     def __str__(self):
         return self.title
 
+class Type_transporation(models.Model):
+    title_type = models.CharField(max_length=60, verbose_name='Типы перевозок')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    image_type = models.ImageField(verbose_name='Изображение')
+
+    class Meta:
+        verbose_name = 'Тип перевозок'
+        verbose_name_plural = 'Типы перевозок'
+
+    def __str__(self):
+        return self.title_type
+
 class Clients(models.Model):
     name_client = models.CharField(max_length=30, verbose_name='Имя клиента')
     number_telephone = models.CharField(max_length=30, verbose_name="Номер телефона")

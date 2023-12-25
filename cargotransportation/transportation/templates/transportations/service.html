@@ -2,102 +2,107 @@
 {% load static %}
 
 {% block service-path %}
-<div class="centring">
-    {% include 'include/description-page.html' %}
-    <div class="Types-transportation">
-        <h2 class="title-section">Типы перевозок</h2>
-        <div class="group-card-transportation">
-            <div class="card-transportation">
-                <div class="image-container">
-                    <img src="{% static 'transporations/images/type.jpg' %}" alt="">
+<div class="main-page-wrapper">
+    <div class="centring">
+        <div class="description-pages">
+            <h1 class="title-pages">{{ card_items.title }}</h1>
+            <p class="text-pages">{{ card_items.full_description }}</p>
+        </div>
+        <div class="Types-transportation">
+            <h2 class="title-section">Типы перевозок</h2>
+            <div class="group-card-transportation">
+                <div class="card-transportation">
+                    <div class="image-container">
+                        <img src="{% static 'transporations/images/type.jpg' %}" alt="">
+                    </div>
+                    <div class="text-card-transportation-block">
+                        <h3 class="title-card-transportation">Перевозки</h3>
+                        <p class="text-card-transportation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus laborum consectetur repellat quas porro, nobis tempora impedit facere. In corporis eaque magni? Pariatur optio nam laudantium! Possimus, sunt amet!</p>
+                    </div>
                 </div>
-                <div class="text-card-transportation-block">
-                    <h3 class="title-card-transportation">Перевозки</h3>
-                    <p class="text-card-transportation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus laborum consectetur repellat quas porro, nobis tempora impedit facere. In corporis eaque magni? Pariatur optio nam laudantium! Possimus, sunt amet!</p>
+                <div class="card-transportation">
+                    <div class="image-container">
+                        <img src="{% static 'transporations/images/type.jpg' %}" alt="">
+                    </div>
+                    <div class="text-card-transportation-block">
+                        <h3 class="title-card-transportation">Перевозки</h3>
+                        <p class="text-card-transportation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus laborum consectetur repellat quas porro, nobis tempora impedit facere. In corporis eaque magni? Pariatur optio nam laudantium! Possimus, sunt amet!</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card-transportation">
-                <div class="image-container">
-                    <img src="{% static 'transporations/images/type.jpg' %}" alt="">
+                <div class="card-transportation">
+                    <div class="image-container">
+                        <img src="{% static 'transporations/images/type.jpg' %}" alt="">
+                    </div>
+                    <div class="text-card-transportation-block">
+                        <h3 class="title-card-transportation">Перевозки</h3>
+                        <p class="text-card-transportation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus laborum consectetur repellat quas porro, nobis tempora impedit facere. In corporis eaque magni? Pariatur optio nam laudantium! Possimus, sunt amet!</p>
+                    </div>
                 </div>
-                <div class="text-card-transportation-block">
-                    <h3 class="title-card-transportation">Перевозки</h3>
-                    <p class="text-card-transportation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus laborum consectetur repellat quas porro, nobis tempora impedit facere. In corporis eaque magni? Pariatur optio nam laudantium! Possimus, sunt amet!</p>
-                </div>
-            </div>
-            <div class="card-transportation">
-                <div class="image-container">
-                    <img src="{% static 'transporations/images/type.jpg' %}" alt="">
-                </div>
-                <div class="text-card-transportation-block">
-                    <h3 class="title-card-transportation">Перевозки</h3>
-                    <p class="text-card-transportation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus laborum consectetur repellat quas porro, nobis tempora impedit facere. In corporis eaque magni? Pariatur optio nam laudantium! Possimus, sunt amet!</p>
-                </div>
-            </div>
-            <div class="card-transportation">
-                <div class="image-container">
-                    <img src="{% static 'transporations/images/type.jpg' %}" alt="">
-                </div>
-                <div class="text-card-transportation-block">
-                    <h3 class="title-card-transportation">Перевозки</h3>
-                    <p class="text-card-transportation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus laborum consectetur repellat quas porro, nobis tempora impedit facere. In corporis eaque magni? Pariatur optio nam laudantium! Possimus, sunt amet!</p>
+                <div class="card-transportation">
+                    <div class="image-container">
+                        <img src="{% static 'transporations/images/type.jpg' %}" alt="">
+                    </div>
+                    <div class="text-card-transportation-block">
+                        <h3 class="title-card-transportation">Перевозки</h3>
+                        <p class="text-card-transportation">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ducimus laborum consectetur repellat quas porro, nobis tempora impedit facere. In corporis eaque magni? Pariatur optio nam laudantium! Possimus, sunt amet!</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="calculating-value">
-        <h2 class="title-block">Расчёт стоимости</h2>
-        <div class="block-form-service">
-            <form action="">
-                <input type="checkbox" id="checkbox" name="checkbox">
-                <label for="checkbox">Опасный груз</label>
-                <div class="info-form">
-                    <div class="input-info">
-                        <input type="text" placeholder="Тип груза">
-                        <input type="text" placeholder="Вес груза">
-                        <input type="text" placeholder="Габариты груза">
-                        <input type="text" placeholder="Тип перевозки">
-                        <input type="text" placeholder="Длина маршрута">
-                    </div>
-                    <div class="textarea-service">
-                        0р.
-                    </div>
-                </div>
-            </form>
-            <button class="btn-service">Рассчитать</button>
-        </div>
-    </div>
-    <div class="order-service">
-        <h2 class="title-block">Закжи уже сейчас</h2>
-        <div class="block-form-service">
-            <form action="" method="">
-                <div class="grp-inp contact-info-form">
-                    <h2>Контактная информация</h2>
-                    <input type="text" placeholder="Имя">
-                    <input type="tel" placeholder="Телефон">
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="grp-inp cargo-info-form">
-                    <h2>Информация о грузе</h2>
-                    <div class="cargo-grp-inp">
-                        <div class="cargo-grp-inp-1 cgi">
+        <div class="calculating-value">
+            <h2 class="title-block">Расчёт стоимости</h2>
+            <div class="block-form-service">
+                <form action="">
+                    <input type="checkbox" id="checkbox" name="checkbox">
+                    <label for="checkbox">Опасный груз</label>
+                    <div class="info-form">
+                        <div class="input-info">
                             <input type="text" placeholder="Тип груза">
                             <input type="text" placeholder="Вес груза">
-                        </div>
-                        <div class="cargo-grp-inp-1 cgi">
                             <input type="text" placeholder="Габариты груза">
                             <input type="text" placeholder="Тип перевозки">
+                            <input type="text" placeholder="Длина маршрута">
+                        </div>
+                        <div class="textarea-service">
+                            0р.
                         </div>
                     </div>
-                    <textarea placeholder="Дополнительная информация о грузе"></textarea>
-                </div>
-                <div class="grp-inp route-information-form">
-                    <h2>Информация о маршруте</h2>
-                    <input type="text" placeholder="Точка отправления">
-                    <input type="text" placeholder="Точка доставки">
-                </div>
-                <input type="submit" value="Отправить" class="btn-service">
-            </form>
+                </form>
+                <button class="btn-service">Рассчитать</button>
+            </div>
+        </div>
+        <div class="order-service">
+            <h2 class="title-block">Закжи уже сейчас</h2>
+            <div class="block-form-service">
+                <form action="" method="">
+                    <div class="grp-inp contact-info-form">
+                        <h2>Контактная информация</h2>
+                        <input type="text" placeholder="Имя">
+                        <input type="tel" placeholder="Телефон">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="grp-inp cargo-info-form">
+                        <h2>Информация о грузе</h2>
+                        <div class="cargo-grp-inp">
+                            <div class="cargo-grp-inp-1 cgi">
+                                <input type="text" placeholder="Тип груза">
+                                <input type="text" placeholder="Вес груза">
+                            </div>
+                            <div class="cargo-grp-inp-1 cgi">
+                                <input type="text" placeholder="Габариты груза">
+                                <input type="text" placeholder="Тип перевозки">
+                            </div>
+                        </div>
+                        <textarea placeholder="Дополнительная информация о грузе"></textarea>
+                    </div>
+                    <div class="grp-inp route-information-form">
+                        <h2>Информация о маршруте</h2>
+                        <input type="text" placeholder="Точка отправления">
+                        <input type="text" placeholder="Точка доставки">
+                    </div>
+                    <input type="submit" value="Отправить" class="btn-service">
+                </form>
+            </div>
         </div>
     </div>
 </div>
