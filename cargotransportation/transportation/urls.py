@@ -24,4 +24,5 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('company/', views.company, name='company'),
     path('services/<slug:name>', views.service, name='service'),
+    path('success/', views.success, name='success'),
 ]

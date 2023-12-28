@@ -29,7 +29,7 @@ label {
 }
 
 .textarea-service {
-    padding: 0 20px;
+    padding: 20px;
     border-radius: 5px;
     background: var(--light-gray);
     resize: none;
@@ -56,6 +56,10 @@ label {
 
 .btn-service:hover {
     background-color: #3f4e1f;
+}
+
+.order-service {
+    margin-top: 120px;
 }
 
 .block-form-service {
@@ -119,3 +123,25 @@ label {
     justify-content: space-between;
     gap: 16px;
 }
+
+@media screen and (max-width: 1100px) {
+    .info-form, .cargo-grp-inp {
+        flex-direction: column;
+    }
+
+    .textarea-service {
+        font-size: 6rem;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .block-form-service {
+        max-width: 100%;
+    }
+
+    .block-form-service input {
+        max-width: 100%;
+    }
+    
+}
+
