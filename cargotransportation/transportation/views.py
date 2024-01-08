@@ -1,6 +1,7 @@
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from .models import *
+from django.core.mail import send_mail
 
 menu_items = Menu.objects.all()
 type_transporations_item = Type_transporation.objects.all()
@@ -39,6 +40,22 @@ def service(request, name):
         'type_transporations_item': type_transporations_item,
     }
     return render(request, "transportations/service.html", context=data)
+
+def success(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        tel = request.POST.get('tel', '')
+
+        data = f"Имя: {name}\nEmail: {email}\nТел: {tel}"
+
+        send_mail('С вами хотят связаться', data, "Sender", ['qaz1234567890838@gmail.com'],
+                      fail_silently=False)
+    data = {
+        'title': 'Отправлено',
+        'menu_items': menu_items,
+    }
+    return render(request, 'transportations/success.html', context=data)
 
 #404
 def pageNotFound(request, exception):

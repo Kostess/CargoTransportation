@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'transporations/style/services.css' %}">
 
     <script src="{% static 'transporations/script/index.js' %}" defer></script>
+    <script src="{% static 'transporations/script/service.js' %}" defer></script>
 </head>
 <body>
     <header class="header">
@@ -80,6 +81,10 @@
 
     {% endblock %}
 
+    {% block success %}
+
+    {% endblock %}
+
     <footer class="footer">
 
         <div class="footer-top-wrapper">
@@ -102,6 +107,7 @@
                         <h3 class="title-block-form">Свяжитесь с нами</h3>
                         <div class="block-form" id="contact-form">
                             <form action="">
+                                {% csrf_token %}
                                 <input type="text" placeholder="Введите ваше имя">
                                 <input type="email" placeholder="Введите ваш Email">
                                 <input type="tel" placeholder="Введите номер телефона">
