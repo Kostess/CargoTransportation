@@ -32,8 +32,7 @@ class DriverAdmin(admin.ModelAdmin):
 # admin.site.register(Clients, ClientsAdmin)
 # admin.site.register(Driver, DriverAdmin)
 admin.site.register(Vehicle)
-
-
+admin.site.register(Orders)
 admin.site.register(Incidents)
 admin.site.register(Transportation_categories)
 admin.site.register(Cargo)

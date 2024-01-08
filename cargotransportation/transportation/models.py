@@ -108,7 +108,16 @@ class Transportation_categories(models.Model):
         verbose_name = 'Категории перевозок'
         verbose_name_plural = 'Категории перевозок'
 
-
+class Orders(models.Model):
+    name_order = models.CharField(max_length=255, verbose_name="Название")
+    date_order = models.DateField(verbose_name="Дата")
+    period_execution = models.CharField(max_length=30, verbose_name="Срок выполнения")
+    price_order = models.IntegerField(default=0, verbose_name="Цена")
+    order_completion_status = models.CharField(max_length=30, verbose_name="Статус выполнения")
+    point_departure = models.CharField(max_length=255, verbose_name="Точка отправки")
+    point_destination = models.CharField(max_length=255, verbose_name="Точка доставки")
+    distance = models.IntegerField(default=0, verbose_name="Расстояние")
+    additional_information = models.TextField(blank=True, verbose_name="Доп информация")
 
     class Meta:
         verbose_name = 'Заказы'
