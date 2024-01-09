@@ -36,3 +36,9 @@
 .tel-block {
     margin-top: 20px;
 }
+
+.card-yandex {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}

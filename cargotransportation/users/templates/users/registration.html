@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block login %}
+<div class="block-form ">
+    <div class="centring">
+        <div class="users-form">
+            <h1>Регистрация</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                {{ form.as_table }}
+                <p>
+                    <button type="submit">Регистрация</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

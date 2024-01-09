@@ -1,7 +1,13 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.core.mail import send_mail
+
+pages = [
+    {'title': 'Услгуи', 'description': 'Весь список услуг, предоставляемый нашей компанией'},
+    {'title': 'О компании', 'description': 'Вся необходимая информация про компанию ТрансГруз'},
+]
 
 menu_items = Menu.objects.all()
 type_transporations_item = Type_transporation.objects.all()
@@ -21,6 +27,7 @@ def services(request):
         'title': 'Услуги',
         'card_items': card_items,
         'menu_items': menu_items,
+        'page_des': pages[0],
     }
     return render(request, "transportations/services.html", context=data)
 
@@ -28,9 +35,11 @@ def company(request):
     data = {
         'title': 'О компании',
         'menu_items': menu_items,
+        'page_des': pages[1],
     }
     return render(request, "transportations/company.html", context=data)
 
+#@login_required
 def service(request, name):
     card_items = get_object_or_404(Cards_orders, slug=name)
     data = {

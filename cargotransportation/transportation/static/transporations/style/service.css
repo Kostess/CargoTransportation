@@ -124,6 +124,14 @@ label {
     gap: 16px;
 }
 
+.link-user {
+    text-decoration: underline;
+}
+
+.link-user:hover {
+    color: #244bc9;
+}
+
 @media screen and (max-width: 1100px) {
     .info-form, .cargo-grp-inp {
         flex-direction: column;

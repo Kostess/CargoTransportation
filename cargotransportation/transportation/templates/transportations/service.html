@@ -47,6 +47,7 @@
         </div>
 
         <div class="order-service">
+        {% if user and user.is_active %}
             <h2 class="title-block">Закжи уже сейчас</h2>
             <div class="block-form-service">
                 <form action="" method="POST">
@@ -78,6 +79,12 @@
                     <input type="submit" value="Отправить" class="btn-service">
                 </form>
             </div>
+
+        {% else %}
+            <h2 class="title-block">Чтобы заказать услугу, нужно быть <a href="{% url 'users:login_user' %}"
+                                                                     class="link-user">
+                авторизованным</a></h2>
+        {% endif %}
         </div>
     </div>
 </div>

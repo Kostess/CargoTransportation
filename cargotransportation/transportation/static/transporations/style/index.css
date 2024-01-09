@@ -366,6 +366,47 @@ ul {
     text-decoration: underline;
 }
 
+.users-form, .block-profile {
+    margin-top: 120px;
+}
+
+.users-form form {
+    display: flex;
+    align-items: start;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.users-form h1 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.users-form label {
+    margin-top: 10px;
+}
+
+.users-block {
+    display: flex;
+}
+
+.users-block a {
+    font-size: 20px;
+}
+
+.users-block a:first-child {
+    padding-right: 10px;
+    border-right: 1px solid #fff;
+}
+
+.users-block a:last-child {
+    padding-left: 10px;
+}
+
+.users-block a:hover {
+    text-decoration: underline;
+}
+
 .burger-menu {
     width: 30px;
     height: 30px;
