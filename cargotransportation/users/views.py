@@ -1,14 +1,10 @@
-from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
-from users.forms import LoginUserForm, RegisterUserForm
+from .forms import LoginUserForm, RegisterUserForm
 from transportation.models import Menu
 
 menu = Menu.objects.all()

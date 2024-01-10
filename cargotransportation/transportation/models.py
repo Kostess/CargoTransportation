@@ -118,6 +118,7 @@ class Orders(models.Model):
     point_destination = models.CharField(max_length=255, verbose_name="Точка доставки")
     distance = models.IntegerField(default=0, verbose_name="Расстояние")
     additional_information = models.TextField(blank=True, verbose_name="Доп информация")
+    
 
     class Meta:
         verbose_name = 'Заказы'

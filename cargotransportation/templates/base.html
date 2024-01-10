@@ -40,7 +40,11 @@
 
                     <div class="users-block">
                         {% if user.is_authenticated %}
-                            <a href="{% url 'users:profile' %}">{{ user.username }}</a>
+                            {% if user.is_superuser %}
+                                <a href="{% url 'admin:index' %}">{{ user.username }}</a>
+                            {% else %}
+                                <a href="{% url 'users:profile' %}">{{ user.username }}</a>
+                            {% endif %}
                             <a href="{% url 'users:logout_user' %}">Выйти</a>
                         {% else %}
                             <a href="{% url 'users:login_user' %}">Войти</a>
@@ -116,11 +120,11 @@
                     <div class="footer-right">
                         <h3 class="title-block-form">Свяжитесь с нами</h3>
                         <div class="block-form" id="contact-form">
-                            <form action="">
+                            <form action="/success/" id="form" method="POST">
                                 {% csrf_token %}
-                                <input type="text" placeholder="Введите ваше имя">
-                                <input type="email" placeholder="Введите ваш Email">
-                                <input type="tel" placeholder="Введите номер телефона">
+                                <input type="text" placeholder="Введите ваше имя" name="name">
+                                <input type="email" placeholder="Введите ваш Email" name="email">
+                                <input type="tel" placeholder="Введите номер телефона" name="tel">
                                 <button type="submit">Отправить</button>
                             </form>
                         </div>
