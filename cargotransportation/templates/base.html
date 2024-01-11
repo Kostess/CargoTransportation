@@ -66,6 +66,22 @@
                         <a href="{% url g.link %}" class="link-menu">{{ g.name }}</a>
                     </li>
                 {% endfor %}
+                <div class="users-block-burger">
+                        {% if user.is_authenticated %}
+                            {% if user.is_superuser %}
+                                <a href="{% url 'admin:index' %}">{{ user.username }}</a>
+                                <span> | </span>
+                            {% else %}
+                                <a href="{% url 'users:profile' %}">{{ user.username }}</a>
+                                <span> | </span>
+                            {% endif %}
+                            <a href="{% url 'users:logout_user' %}">Выйти</a>
+                        {% else %}
+                            <a href="{% url 'users:login_user' %}">Войти</a>
+                            <span> | </span>
+                            <a href="{% url 'users:register_user' %}">Регистрация</a>
+                        {% endif %}
+                </div>
             </ul>
 
         </div>

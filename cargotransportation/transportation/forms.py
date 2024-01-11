@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Clients, Cargo, Orders
+from .models import Clients, Cargos, Orders
 
 
 class ClientInfoForm(forms.ModelForm):
@@ -14,45 +14,16 @@ class ClientInfoForm(forms.ModelForm):
         }
 
 
-class CargoInfoForm1(forms.ModelForm):
+class CargoInfoForm(forms.ModelForm):
     class Meta:
-        model = Orders
-        fields = ['name_order']
+        model = Cargos
+        fields = ['name_cargo', 'type', 'weight', 'dimensions', 'type_transportation']
         widgets = {
-            'name_order': forms.TextInput(attrs={'placeholder': "Название груза"})
-        }
-
-
-#
-#
-class CargoInfoForm2(forms.ModelForm):
-    class Meta:
-        model = Cargo
-        fields = ['type', 'weight']
-        widgets = {
+            'name_cargo': forms.TextInput(attrs={'placeholder': "Название груза"}),
             'type': forms.TextInput(attrs={'placeholder': "Тип груза"}),
-            'weight': forms.TextInput(attrs={'placeholder': "Вес груза"})
-        }
-
-
-class CargoInfoForm3(forms.ModelForm):
-    class Meta:
-        model = Cargo
-        fields = ['dimensions', 'type_transportation']
-        widgets = {
+            'weight': forms.TextInput(attrs={'placeholder': "Вес груза"}),
             'dimensions': forms.TextInput(attrs={'placeholder': "Габариты груза"}),
             'type_transportation': forms.TextInput(attrs={'placeholder': "Тип перевозки"})
-        }
-
-
-class RouteInfoForm(forms.ModelForm):
-    class Meta:
-        model = Orders
-        fields = ['point_departure', 'point_destination', 'period_execution']
-        widgets = {
-            'point_departure': forms.TextInput(attrs={'placeholder': "Точка отправки"}),
-            'point_destination': forms.TextInput(attrs={'placeholder': "Точка доставки"}),
-            'period_execution': forms.TextInput(attrs={'placeholder': "Срок выполнения"})
         }
 
 

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -72,10 +73,24 @@ class Driver(models.Model):
 
 
 class Cargo(models.Model):
+    name_cargo = models.CharField(max_length=30, verbose_name="Название груза...")
     weight = models.CharField(max_length=30, verbose_name="Вес")
     type = models.CharField(max_length=30, verbose_name="Тип")
     dimensions = models.CharField(max_length=30, verbose_name="Габариты")
     type_transportation = models.CharField(max_length=30, verbose_name="Тип перевозки")
+
+    class Meta:
+        verbose_name = 'Груз'
+        verbose_name_plural = 'Грузы'
+
+class Cargos(models.Model):
+    name_cargo = models.CharField(max_length=30, verbose_name="Название груза...")
+    weight = models.CharField(max_length=30, verbose_name="Вес")
+    type = models.CharField(max_length=30, verbose_name="Тип")
+    dimensions = models.CharField(max_length=30, verbose_name="Габариты")
+    type_transportation = models.CharField(max_length=30, verbose_name="Тип перевозки")
+    status = models.CharField(max_length=30, verbose_name="Статус груза", blank=True, default="Не выполнен")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Груз'

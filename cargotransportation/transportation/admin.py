@@ -46,10 +46,10 @@ class IncidentsAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'name_incident')
 
 
-@admin.register(Cargo)
+@admin.register(Cargos)
 class CargoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'weight', 'type', 'dimensions', 'type_transportation')
-    list_display_links = ('id', 'type')
+    list_display = ('id', 'name_cargo', 'weight', 'type', 'dimensions', 'type_transportation', 'status')
+    list_display_links = ('id', 'name_cargo')
 
 
 @admin.register(Orders)

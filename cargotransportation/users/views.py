@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from .forms import LoginUserForm, RegisterUserForm
-from transportation.models import Menu
+from transportation.models import Menu, Cargos, Clients
 
 menu = Menu.objects.all()
 
@@ -28,9 +28,13 @@ class RegisterUser(CreateView):
 
 @login_required
 def profile(request):
+    client_info = Clients.objects.all()
+    cargo_info = Cargos.objects.filter(status="Не выполнен")
     data = {
         'title': 'Профиль пользователя',
         'menu_items': menu,
+        'client_info': client_info,
+        'cargo_info': cargo_info
     }
     return render(request, 'users/profile.html', context=data)
 

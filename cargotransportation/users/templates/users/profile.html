@@ -8,5 +8,18 @@
         </div>
     </div>
 
+    <div class="orders_list centring">
+        <h2>Ваши заказы</h2>
+        <div class="orders_cards">
+            {% for j in cargo_info %}
+                <div class="card_order">
+                    <p>Наименование груза: {{ j.name_cargo }}</p>
+                    <p>Тип груза: {{ j.type }}</p>
+                    <p>Вес груза: {{ j.weight }}</p>
+                    <p>Тип перевозки: {{ j.type_transportation }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

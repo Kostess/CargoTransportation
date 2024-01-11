@@ -407,6 +407,21 @@ ul {
     text-decoration: underline;
 }
 
+.orders_list h2 {
+    text-align: center;
+}
+
+.orders_cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.card_order {
+    padding: 10px;
+    border: 1px solid #000;
+}
+
 .burger-menu {
     width: 30px;
     height: 30px;
@@ -542,6 +557,10 @@ ul {
         height: 100%;
         object-fit: cover;
     }
+
+    .orders_cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen and (max-width: 880px) {
@@ -584,5 +603,18 @@ ul {
         flex-direction: column-reverse;
         text-align: center;
         gap: 5px;
+    }
+
+    .users-block {
+        display: none;
+    }
+
+    .users-block-burger {
+        margin-top: 10px;
+        font-size: 24px;
+    }
+
+    .orders_cards {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

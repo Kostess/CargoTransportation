@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import ClientInfoForm, CargoInfoForm1, CargoInfoForm2, CargoInfoForm3, RouteInfoForm, PriceInfoForm
+from .forms import ClientInfoForm, PriceInfoForm, CargoInfoForm
 from .models import *
 from django.core.mail import send_mail
 
@@ -49,35 +49,23 @@ def company(request):
 def service(request, name):
     if request.method == 'POST':
         form_client = ClientInfoForm(request.POST)
-        #form_cargo1 = CargoInfoForm1(request.POST)
-        form_cargo2 = CargoInfoForm2(request.POST)
-        form_cargo3 = CargoInfoForm3(request.POST)
-        #form_rote = RouteInfoForm(request.POST)
+        form_cargo = CargoInfoForm(request.POST)
         #form_price = PriceInfoForm(request.POST)
 
-        if form_client.is_valid() and form_cargo2.is_valid() and form_cargo3.is_valid():
+        if form_client.is_valid() and form_cargo.is_valid():
             try:
                 form_client.save()
-                #form_cargo1.save()
-                form_cargo2.save()
-                form_cargo3.save()
-                #form_rote.save()
+                form_cargo.save()
                 #form_price.save()
                 return redirect('users:profile')
             except:
                 form_client.add_error(None, "Ошибка1")
-                #form_cargo1.add_error(None, "Ошибка2")
-                form_cargo2.add_error(None, "Ошибка3")
-                form_cargo3.add_error(None, "Ошибка4")
-                #form_rote.add_error(None, "Ошибка5")
+                form_cargo.add_error(None, "Ошибка2")
                 #form_price.add_error(None, "Ошибка6")
     else:
         form_client = ClientInfoForm()
-        #form_cargo1 = CargoInfoForm1()
-        form_cargo2 = CargoInfoForm2()
-        form_cargo3 = CargoInfoForm3()
-        #form_rote = RouteInfoForm()
-        form_price = PriceInfoForm()
+        form_cargo = CargoInfoForm()
+        #form_price = PriceInfoForm()
 
     card_items = get_object_or_404(Cards_orders, slug=name)
     data = {
@@ -85,9 +73,7 @@ def service(request, name):
         'card_items': card_items,
         'menu_items': menu_items,
         'form_client': form_client,
-        'form_cargo2': form_cargo2,
-        'form_cargo3': form_cargo3,
-        'form_price': form_price,
+        'form_cargo': form_cargo,
         'type_transporations_item': type_transporations_item,
     }
 

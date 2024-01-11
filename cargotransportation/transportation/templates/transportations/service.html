@@ -66,28 +66,14 @@
                         <h2>Информация о грузе</h2>
                         <div class="cargo-grp-inp">
                             <div class="cargo-grp-inp-1 cgi">
-                                {{ form_cargo1 }}
-                                {% for j in form_cargo2 %}
-                                    {{ j }}
-                                {% endfor %}
-                            </div>
-                            <div class="cargo-grp-inp-1 cgi">
-                                <label></label>
-                                {% for i in form_cargo3 %}
+                               {% for i in form_cargo %}
                                     {{ i }}
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
-                    <div class="grp-inp route-information-form">
-                        <h2>Информация о маршруте</h2>
-                        {{ form_rote }}
-                    </div>
                     <div class="price">
                         Цена:
-                        {% for i in form_price %}
-                            {{ i }}
-                        {% endfor %}
                     </div>
                     <input type="submit" value="Отправить" class="btn-service">
                 </form>
