@@ -90,7 +90,6 @@ class Cargos(models.Model):
     dimensions = models.CharField(max_length=30, verbose_name="Габариты")
     type_transportation = models.CharField(max_length=30, verbose_name="Тип перевозки")
     status = models.CharField(max_length=30, verbose_name="Статус груза", blank=True, default="Не выполнен")
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Груз'

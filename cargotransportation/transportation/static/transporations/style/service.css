@@ -132,6 +132,18 @@ label {
     color: #244bc9;
 }
 
+.price {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.price input {
+    background: none;
+    font-weight: inherit;
+    font-size: inherit;
+    padding-left: 5px;
+}
+
 @media screen and (max-width: 1100px) {
     .info-form, .cargo-grp-inp {
         flex-direction: column;

@@ -6,6 +6,8 @@ from .forms import ClientInfoForm, PriceInfoForm, CargoInfoForm
 from .models import *
 from django.core.mail import send_mail
 
+import datetime
+
 pages = [
     {'title': 'Услгуи', 'description': 'Весь список услуг, предоставляемый нашей компанией'},
     {'title': 'О компании', 'description': 'Вся необходимая информация про компанию ТрансГруз'},
@@ -13,7 +15,7 @@ pages = [
 
 menu_items = Menu.objects.all()
 type_transporations_item = Type_transporation.objects.all()
-
+dt = datetime.datetime.now()
 
 def index(request):
     card_three = Cards_orders.objects.all()[:3]
@@ -22,6 +24,7 @@ def index(request):
         'menu_items': menu_items,
         'card_three': card_three,
         'type_transporations_item': type_transporations_item,
+        'dt': dt
     }
     return render(request, "transportations/index.html", context=data)
 
@@ -33,6 +36,7 @@ def services(request):
         'card_items': card_items,
         'menu_items': menu_items,
         'page_des': pages[0],
+        'dt': dt
     }
     return render(request, "transportations/services.html", context=data)
 
@@ -42,6 +46,7 @@ def company(request):
         'title': 'О компании',
         'menu_items': menu_items,
         'page_des': pages[1],
+        'dt': dt
     }
     return render(request, "transportations/company.html", context=data)
 
@@ -75,6 +80,7 @@ def service(request, name):
         'form_client': form_client,
         'form_cargo': form_cargo,
         'type_transporations_item': type_transporations_item,
+        'dt': dt
     }
 
     return render(request, "transportations/service.html", context=data)
@@ -93,6 +99,7 @@ def success(request):
     data = {
         'title': 'Отправлено',
         'menu_items': menu_items,
+        'dt': dt
     }
     return render(request, 'transportations/success.html', context=data)
 

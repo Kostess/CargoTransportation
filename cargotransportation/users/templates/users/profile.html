@@ -11,6 +11,7 @@
     <div class="orders_list centring">
         <h2>Ваши заказы</h2>
         <div class="orders_cards">
+        {% if cargo_info.exists %}
             {% for j in cargo_info %}
                 <div class="card_order">
                     <p>Наименование груза: {{ j.name_cargo }}</p>
@@ -19,6 +20,9 @@
                     <p>Тип перевозки: {{ j.type_transportation }}</p>
                 </div>
             {% endfor %}
+        {% else %}
+            <h3>На данный момент заказов нет</h3>
+        {% endif %}
         </div>
     </div>
 

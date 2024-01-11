@@ -7,7 +7,10 @@ from django.views.generic import CreateView
 from .forms import LoginUserForm, RegisterUserForm
 from transportation.models import Menu, Cargos, Clients
 
+import datetime
+
 menu = Menu.objects.all()
+dt = datetime.datetime.now()
 
 
 class LoginUser(LoginView):
@@ -15,6 +18,7 @@ class LoginUser(LoginView):
     template_name = 'users/login.html'
     extra_context = {'title': 'Авторизация',
                      'menu_items': menu,
+                     'dt': dt
                      }
 
 
@@ -23,24 +27,18 @@ class RegisterUser(CreateView):
     template_name = 'users/registration.html'
     extra_context = {'title': 'Регистрация',
                      'menu_items': menu,
+                     'dt': dt
                      }
     success_url = reverse_lazy('users:login_user')
 
 @login_required
 def profile(request):
-    client_info = Clients.objects.all()
     cargo_info = Cargos.objects.filter(status="Не выполнен")
     data = {
         'title': 'Профиль пользователя',
         'menu_items': menu,
-        'client_info': client_info,
-        'cargo_info': cargo_info
+        'cargo_info': cargo_info,
+        'dt': dt
     }
     return render(request, 'users/profile.html', context=data)
 
-# class ProfileUser(LoginRequiredMixin):
-#     model = get_user_model()
-#     template_name = 'users/profile.html'
-#     extra_context = {'title': 'Профиль пользователя',
-#                      'menu_items': menu,
-#                      }
