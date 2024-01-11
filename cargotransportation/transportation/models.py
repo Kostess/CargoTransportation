@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 class Menu(models.Model):
     name = models.CharField(max_length=60, verbose_name='Название')
     link = models.CharField(max_length=255, verbose_name='Ссылка')
@@ -8,6 +9,7 @@ class Menu(models.Model):
     class Meta:
         verbose_name = 'Меню'
         verbose_name_plural = 'Меню'
+
 
 class Cards_orders(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
@@ -26,6 +28,7 @@ class Cards_orders(models.Model):
     def __str__(self):
         return self.title
 
+
 class Type_transporation(models.Model):
     title_type = models.CharField(max_length=60, verbose_name='Типы перевозок')
     description = models.TextField(blank=True, verbose_name='Описание')
@@ -38,19 +41,19 @@ class Type_transporation(models.Model):
     def __str__(self):
         return self.title_type
 
+
 class Clients(models.Model):
     name_client = models.CharField(max_length=30, verbose_name='Имя клиента')
     number_telephone = models.CharField(max_length=30, verbose_name="Номер телефона")
-    adress = models.CharField(max_length=30, verbose_name="Адрес")
-    inn = models.IntegerField(default=0, verbose_name="ИНН")
     email = models.CharField(max_length=30)
 
     class Meta:
-        verbose_name = 'Клиенты'
+        verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
 
     def __str__(self):
         return self.name_client
+
 
 class Driver(models.Model):
     first_name = models.CharField(max_length=30, verbose_name="Имя")
@@ -61,22 +64,23 @@ class Driver(models.Model):
     work_experience = models.CharField(max_length=30, verbose_name="Опыт работы")
 
     class Meta:
-        verbose_name = 'Водители'
+        verbose_name = 'Водитель'
         verbose_name_plural = 'Водители'
 
     def __str__(self):
         return self.last_name + ' ' + self.first_name
 
+
 class Cargo(models.Model):
     weight = models.CharField(max_length=30, verbose_name="Вес")
     type = models.CharField(max_length=30, verbose_name="Тип")
-    cargo_volume = models.CharField(max_length=30, verbose_name="Объем")
-    cargo_value = models.IntegerField(default=0, verbose_name="Стоимость")
     dimensions = models.CharField(max_length=30, verbose_name="Габариты")
+    type_transportation = models.CharField(max_length=30, verbose_name="Тип перевозки")
 
     class Meta:
-        verbose_name = 'Грузы'
+        verbose_name = 'Груз'
         verbose_name_plural = 'Грузы'
+
 
 class Vehicle(models.Model):
     type_vehicle = models.CharField(max_length=30, verbose_name="Тип")
@@ -88,7 +92,8 @@ class Vehicle(models.Model):
 
     class Meta:
         verbose_name = 'Техника'
-        verbose_name_plural = 'Техника'
+        verbose_name_plural = 'Техники'
+
 
 class Incidents(models.Model):
     name_incident = models.CharField(max_length=30, verbose_name="Название")
@@ -98,32 +103,20 @@ class Incidents(models.Model):
     description = models.TextField(blank=True, verbose_name="Описание")
 
     class Meta:
-        verbose_name = 'Происшествия'
+        verbose_name = 'Происшествие'
         verbose_name_plural = 'Происшествия'
 
-class Transportation_categories(models.Model):
-    category_type = models.CharField(max_length=30, verbose_name="Тип категории")
-
-    class Meta:
-        verbose_name = 'Категории перевозок'
-        verbose_name_plural = 'Категории перевозок'
 
 class Orders(models.Model):
-    name_order = models.CharField(max_length=255, verbose_name="Название")
-    date_order = models.DateField(verbose_name="Дата")
-    period_execution = models.CharField(max_length=30, verbose_name="Срок выполнения")
-    price_order = models.IntegerField(default=0, verbose_name="Цена")
-    order_completion_status = models.CharField(max_length=30, verbose_name="Статус выполнения")
-    point_departure = models.CharField(max_length=255, verbose_name="Точка отправки")
-    point_destination = models.CharField(max_length=255, verbose_name="Точка доставки")
-    distance = models.IntegerField(default=0, verbose_name="Расстояние")
+    name_order = models.CharField(max_length=255, verbose_name="Название", default="Заказ")
+    date_order = models.DateField(verbose_name="Дата", auto_now_add=True)
+    period_execution = models.CharField(max_length=30, verbose_name="Срок выполнения", default="1 Неделя")
+    price_order = models.CharField(verbose_name="Цена", max_length=10, default="0р.")
+    order_completion_status = models.CharField(max_length=30, verbose_name="Статус выполнения", default="В обработке")
+    point_departure = models.CharField(max_length=255, verbose_name="Точка отправки", default="Москва")
+    point_destination = models.CharField(max_length=255, verbose_name="Точка доставки", default="Москва")
     additional_information = models.TextField(blank=True, verbose_name="Доп информация")
-    
 
     class Meta:
-        verbose_name = 'Заказы'
+        verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
-
-
-
-

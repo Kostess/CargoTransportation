@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block scrips_service %}
+    <script src="{% static 'transporations/script/service.js' %}" defer></script>
+{% endblock %}
+
 {% block service-path %}
 <div class="main-page-wrapper">
     <div class="centring">
@@ -32,9 +36,9 @@
                     <label for="checkbox">Опасный груз</label>
                     <div class="info-form">
                         <div class="input-info">
-                            <input type="text" placeholder="Тип груза" id="type_cargo">
-                            <input type="text" placeholder="Вес груза" id="cargo_weight">
-                            <input type="text" placeholder="Тип перевозки" id="type_transportation">
+                            <input type="text" placeholder="Тип груза" id="type_cargo_calc">
+                            <input type="text" placeholder="Вес груза" id="cargo_weight_calc">
+                            <input type="text" placeholder="Тип перевозки" id="type_transportation_calc">
                             <input type="text" placeholder="Длина маршрута" id="route_length">
                         </div>
                         <div class="textarea-service" id="price">
@@ -47,39 +51,49 @@
         </div>
 
         <div class="order-service">
-        {% if user and user.is_active %}
+        {% if user and user.is_active and not user.is_superuser %}
             <h2 class="title-block">Закжи уже сейчас</h2>
             <div class="block-form-service">
                 <form action="" method="POST">
+                    {% csrf_token %}
                     <div class="grp-inp contact-info-form">
                         <h2>Контактная информация</h2>
-                        <input type="text" placeholder="Имя" name="name">
-                        <input type="tel" placeholder="Телефон" name="tel">
-                        <input type="email" placeholder="Email" name="email">
+                        {% for i in form_client %}
+                            {{ i }}
+                        {% endfor %}
                     </div>
                     <div class="grp-inp cargo-info-form">
                         <h2>Информация о грузе</h2>
                         <div class="cargo-grp-inp">
                             <div class="cargo-grp-inp-1 cgi">
-                                <input type="text" placeholder="Тип груза" name="type_cargo">
-                                <input type="text" placeholder="Вес груза" name="cargo_weight">
+                                {{ form_cargo1 }}
+                                {% for j in form_cargo2 %}
+                                    {{ j }}
+                                {% endfor %}
                             </div>
                             <div class="cargo-grp-inp-1 cgi">
-                                <input type="text" placeholder="Габариты груза" name="dimensions_cargo">
-                                <input type="text" placeholder="Тип перевозки" name="type_ransportation">
+                                <label></label>
+                                {% for i in form_cargo3 %}
+                                    {{ i }}
+                                {% endfor %}
                             </div>
                         </div>
-                        <textarea placeholder="Дополнительная информация о грузе" name="info_cargo"></textarea>
                     </div>
                     <div class="grp-inp route-information-form">
                         <h2>Информация о маршруте</h2>
-                        <input type="text" placeholder="Точка отправления" name="point_departure">
-                        <input type="text" placeholder="Точка доставки" name="point_delivery ">
+                        {{ form_rote }}
+                    </div>
+                    <div class="price">
+                        Цена:
+                        {% for i in form_price %}
+                            {{ i }}
+                        {% endfor %}
                     </div>
                     <input type="submit" value="Отправить" class="btn-service">
                 </form>
             </div>
-
+        {% elif user.is_superuser %}
+            <h2 class="title-block">Вы не можете осуществлять заказ</h2>
         {% else %}
             <h2 class="title-block">Чтобы заказать услугу, нужно быть <a href="{% url 'users:login_user' %}"
                                                                      class="link-user">

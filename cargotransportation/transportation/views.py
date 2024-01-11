@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponseBadRequest, HttpResponseForbidden
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+
+from .forms import ClientInfoForm, CargoInfoForm1, CargoInfoForm2, CargoInfoForm3, RouteInfoForm, PriceInfoForm
 from .models import *
 from django.core.mail import send_mail
 
@@ -11,6 +13,8 @@ pages = [
 
 menu_items = Menu.objects.all()
 type_transporations_item = Type_transporation.objects.all()
+
+
 def index(request):
     card_three = Cards_orders.objects.all()[:3]
     data = {
@@ -20,6 +24,7 @@ def index(request):
         'type_transporations_item': type_transporations_item,
     }
     return render(request, "transportations/index.html", context=data)
+
 
 def services(request):
     card_items = Cards_orders.objects.all()
@@ -31,6 +36,7 @@ def services(request):
     }
     return render(request, "transportations/services.html", context=data)
 
+
 def company(request):
     data = {
         'title': 'О компании',
@@ -39,16 +45,54 @@ def company(request):
     }
     return render(request, "transportations/company.html", context=data)
 
-#@login_required
+
 def service(request, name):
+    if request.method == 'POST':
+        form_client = ClientInfoForm(request.POST)
+        #form_cargo1 = CargoInfoForm1(request.POST)
+        form_cargo2 = CargoInfoForm2(request.POST)
+        form_cargo3 = CargoInfoForm3(request.POST)
+        #form_rote = RouteInfoForm(request.POST)
+        #form_price = PriceInfoForm(request.POST)
+
+        if form_client.is_valid() and form_cargo2.is_valid() and form_cargo3.is_valid():
+            try:
+                form_client.save()
+                #form_cargo1.save()
+                form_cargo2.save()
+                form_cargo3.save()
+                #form_rote.save()
+                #form_price.save()
+                return redirect('users:profile')
+            except:
+                form_client.add_error(None, "Ошибка1")
+                #form_cargo1.add_error(None, "Ошибка2")
+                form_cargo2.add_error(None, "Ошибка3")
+                form_cargo3.add_error(None, "Ошибка4")
+                #form_rote.add_error(None, "Ошибка5")
+                #form_price.add_error(None, "Ошибка6")
+    else:
+        form_client = ClientInfoForm()
+        #form_cargo1 = CargoInfoForm1()
+        form_cargo2 = CargoInfoForm2()
+        form_cargo3 = CargoInfoForm3()
+        #form_rote = RouteInfoForm()
+        form_price = PriceInfoForm()
+
     card_items = get_object_or_404(Cards_orders, slug=name)
     data = {
         'title': card_items.title,
         'card_items': card_items,
         'menu_items': menu_items,
+        'form_client': form_client,
+        'form_cargo2': form_cargo2,
+        'form_cargo3': form_cargo3,
+        'form_price': form_price,
         'type_transporations_item': type_transporations_item,
     }
+
     return render(request, "transportations/service.html", context=data)
+
 
 def success(request):
     if request.method == 'POST':
@@ -59,25 +103,29 @@ def success(request):
         data = f"Имя: {name}\nEmail: {email}\nТел: {tel}"
 
         send_mail('С вами хотят связаться', data, "Sender", ['qaz1234567890838@gmail.com'],
-                      fail_silently=False)
+                  fail_silently=False)
     data = {
         'title': 'Отправлено',
         'menu_items': menu_items,
     }
     return render(request, 'transportations/success.html', context=data)
 
-#404
+
+# 404
 def pageNotFound(request, exception):
     return render(request, "transportations/404.html")
 
-#500
+
+# 500
 def errorServer(request):
     return render(request, "transportations/500.html")
 
-#400
+
+# 400
 def accessDenied(request, exception):
     return HttpResponseBadRequest('<h1>Доступ запрещен</h1>')
 
-#403
+
+# 403
 def unableToProcessRequest(request, exception):
     return HttpResponseForbidden('<h1>Невозможно обработать запрос</h1>')

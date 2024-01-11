@@ -1,27 +1,31 @@
 from django.contrib import admin
 from .models import *
-# Register your models here.
+
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'link')
     list_display_links = ('id', 'name')
 
+
 @admin.register(Cards_orders)
 class Cards_ordersAdmn(admin.ModelAdmin):
     list_display = ('id', 'title', 'short_description', 'full_description', 'slug', 'image_card')
     list_display_links = ('id', 'title')
+
 
 @admin.register(Type_transporation)
 class Type_transporationAdmin(admin.ModelAdmin):
     list_display = ('id', 'title_type', 'description', 'image_type')
     list_display_links = ('id', 'title_type')
 
+
 @admin.register(Clients)
 class ClientsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name_client', 'number_telephone', 'adress', 'inn', 'email')
+    list_display = ('id', 'name_client', 'number_telephone', 'email')
     list_display_links = ('id', 'name_client')
     ordering = ('name_client',)
+
 
 @admin.register(Driver)
 class DriverAdmin(admin.ModelAdmin):
@@ -29,12 +33,27 @@ class DriverAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'first_name')
     ordering = ('last_name',)
 
-# admin.site.register(Clients, ClientsAdmin)
-# admin.site.register(Driver, DriverAdmin)
-admin.site.register(Vehicle)
-admin.site.register(Orders)
-admin.site.register(Incidents)
-admin.site.register(Transportation_categories)
-admin.site.register(Cargo)
+
+@admin.register(Vehicle)
+class VehicleAdmin(admin.ModelAdmin):
+    list_display = ('id', 'model', 'registration_number', 'technical_condition', 'type_vehicle', 'load_capacity', 'insurance_information')
+    list_display_links = ('id', 'model')
 
 
+@admin.register(Incidents)
+class IncidentsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name_incident', 'date_incident', 'time_incident', 'type_incident', 'description')
+    list_display_links = ('id', 'name_incident')
+
+
+@admin.register(Cargo)
+class CargoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'weight', 'type', 'dimensions', 'type_transportation')
+    list_display_links = ('id', 'type')
+
+
+@admin.register(Orders)
+class OrdersAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name_order', 'date_order', 'period_execution', 'price_order', 'order_completion_status',
+                    'point_departure', 'point_destination', 'additional_information')
+    list_display_links = ('id', 'name_order')
